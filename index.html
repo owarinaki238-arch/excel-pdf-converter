@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Excelファイルを提出用の美しいPDFに整えるブラウザツール" />
+    <title>Sheetform — Excelを、提出できるPDFへ。</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sheetform ホーム"><span class="brand-mark">S</span><span>Sheetform</span></a>
+      <div class="secure"><span class="status-dot"></span>ファイルは外部に送信されません</div>
+      <button class="help-button" type="button" aria-label="ヘルプ">?</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow"><span></span>EXCEL TO PDF, BEAUTIFULLY</p>
+        <h1>Excelを、<br /><em>提出できるPDF</em>へ。</h1>
+        <p class="lead">用紙サイズ・余白・向きを整えて、表計算ファイルを<br class="desktop-only" />そのまま美しい提出資料に変換します。</p>
+        <div class="steps" aria-label="変換手順">
+          <div class="step active"><b>1</b><span>アップロード</span></div><i></i>
+          <div class="step"><b>2</b><span>レイアウト調整</span></div><i></i>
+          <div class="step"><b>3</b><span>PDF出力</span></div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Excel PDF変換ツール">
+        <aside class="settings-panel">
+          <div class="panel-heading"><span>01</span><div><h2>ファイル</h2><p>変換するExcelを選択</p></div></div>
+          <label class="dropzone" id="dropzone" tabindex="0">
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
+            <span class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v4.5A1.5 1.5 0 006.5 20h11a1.5 1.5 0 001.5-1.5V14"/></svg></span>
+            <strong id="fileLabel">ファイルをドロップ</strong>
+            <span>または <u>ファイルを選択</u></span>
+            <small>.xlsx / .xls / .csv　最大20MB</small>
+          </label>
+
+          <div class="section-rule"></div>
+          <div class="panel-heading"><span>02</span><div><h2>ページ設定</h2><p>提出形式に合わせて調整</p></div></div>
+          <div class="field"><label for="paperSize">用紙サイズ</label><div class="select-wrap"><select id="paperSize"><option value="a4">A4</option><option value="a3">A3</option><option value="letter">Letter</option></select></div></div>
+          <fieldset class="field"><legend>印刷の向き</legend><div class="segmented"><label><input type="radio" name="orientation" value="portrait" checked /><span><svg viewBox="0 0 20 20"><rect x="5" y="2" width="10" height="16" rx="1"/></svg>縦向き</span></label><label><input type="radio" name="orientation" value="landscape" /><span><svg viewBox="0 0 20 20"><rect x="2" y="5" width="16" height="10" rx="1"/></svg>横向き</span></label></div></fieldset>
+          <div class="field"><div class="label-row"><label for="marginRange">余白</label><output id="marginOutput">標準（15mm）</output></div><input type="range" id="marginRange" min="5" max="30" value="15" step="1" /></div>
+          <div class="field"><label for="scaleMode">拡大・縮小</label><div class="select-wrap"><select id="scaleMode"><option value="fit">横幅を1ページに収める</option><option value="actual">実際のサイズ</option><option value="page">1ページに収める</option></select></div></div>
+          <label class="check-row"><input type="checkbox" id="headerToggle" checked /><span class="fake-check"></span><span>ヘッダー行を各ページに表示</span></label>
+          <label class="check-row"><input type="checkbox" id="gridToggle" checked /><span class="fake-check"></span><span>グリッド線を表示</span></label>
+        </aside>
+
+        <section class="preview-panel">
+          <div class="preview-toolbar">
+            <div><span class="preview-label">プレビュー</span><span class="sheet-name" id="sheetName">売上レポート</span></div>
+            <div class="zoom"><button id="zoomOut" type="button">−</button><span id="zoomValue">75%</span><button id="zoomIn" type="button">＋</button></div>
+          </div>
+          <div class="canvas" id="canvas">
+            <div class="page" id="page">
+              <div class="document-header"><div><small>MONTHLY REPORT</small><h3>月次売上レポート</h3><p>2025年 4月 — 営業企画部</p></div><div class="doc-mark">SF</div></div>
+              <div class="summary-cards"><div><span>売上合計</span><strong>¥12,840,000</strong><small class="up">↗ 12.4%</small></div><div><span>受注件数</span><strong>148 <small>件</small></strong><small class="up">↗ 8.2%</small></div><div><span>平均単価</span><strong>¥86,757</strong><small class="down">↘ 3.1%</small></div></div>
+              <div class="table-wrap"><table id="sheetTable"><thead><tr><th>日付</th><th>取引先</th><th>商品カテゴリ</th><th>担当者</th><th class="numeric">売上金額</th><th class="numeric">前月比</th></tr></thead><tbody></tbody><tfoot><tr><td colspan="4">合計</td><td class="numeric">¥12,840,000</td><td class="numeric up">+12.4%</td></tr></tfoot></table></div>
+              <div class="document-footer"><span>Sheetform Inc. ｜ Internal Document</span><span>1 / 1</span></div>
+            </div>
+          </div>
+          <div class="actionbar"><div><strong id="statusText">準備完了</strong><span id="statusSub">A4・縦向き・1ページ</span></div><button class="export-button" id="exportButton" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14"/></svg>PDFをダウンロード</button></div>
+        </section>
+      </section>
+      <p class="privacy-note"><svg viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0110 0v3M6 10h12v10H6z"/></svg><span><strong>安心のローカル処理</strong><br />ファイルはブラウザ内だけで処理され、サーバーへ送信・保存されることはありません。</span></p>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
