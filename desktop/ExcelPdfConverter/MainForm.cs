@@ -24,6 +24,7 @@ namespace ExcelPdfConverter
         private volatile bool stopRequested;
         public MainForm()
         {
+            Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             Text = "Excel → PDF 変換"; ClientSize = new Size(860, 570); MinimumSize = new Size(680, 460);
             Font = new Font("Yu Gothic UI", 10); StartPosition = FormStartPosition.CenterScreen;
             var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 7 };
