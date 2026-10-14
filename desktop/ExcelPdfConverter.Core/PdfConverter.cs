@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-namespace ExcelPdfConverter
+namespace ExcelPdfConverter.Core
 {
-    internal static class PdfConverter
+    public static class PdfConverter
     {
         // Call only on the worker STA thread. Never attach to an existing Excel session.
-        internal static string Convert(string source, string directory, bool ignorePrintArea)
+        public static string Convert(string source, string directory, bool ignorePrintArea)
         {
             object application = null, workbooks = null, workbook = null;
             string temporary = Path.Combine(directory, "." + Guid.NewGuid().ToString("N") + ".pdf");
@@ -63,3 +63,4 @@ namespace ExcelPdfConverter
         }
     }
 }
+

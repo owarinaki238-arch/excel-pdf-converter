@@ -1,5 +1,16 @@
 # Excel → PDF（Windows / Visual Studio 2022）
 
+## Release配布とモジュール構成
+画面と操作を担当する `ExcelPdfConverter.exe` と、Excel連携・PDF変換・保存名処理を担当する `ExcelPdfConverter.Core.dll` に分割しています。
+DLLの公開APIは `ExcelPdfConverter.Core.PdfConverter.Convert` と `ExcelPdfConverter.Core.OutputPaths` です。変換APIはSTAスレッドから呼び出してください。
+
+```powershell
+./desktop/build-release.ps1
+```
+
+VS2022のMSBuildで本体とDLLをReleaseで再ビルドし、DLLを参照したテストを実行後、`desktop/artifacts/ExcelPdfConverter-Windows-Release.zip` を作ります。
+ZIPを展開し、EXEとDLLを同じフォルダーに置いてEXEを起動してください。VS2022は実行時には不要ですが、.NET Framework 4.8とデスクトップ版Excelが必要です。
+
 C# / Windows Forms / .NET Framework 4.8 のデスクトップアプリです。
 ルートの既存ブラウザ版とは別に使用できます。
 

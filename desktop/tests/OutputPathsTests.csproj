@@ -1,6 +1,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"/>
 <PropertyGroup><OutputType>Exe</OutputType><AssemblyName>OutputPathsTests</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><OutputPath>bin\Release\</OutputPath><LangVersion>7.3</LangVersion></PropertyGroup>
-<ItemGroup><Reference Include="System"/><Reference Include="System.Core"/><Compile Include="OutputPathsTests.cs"/><Compile Include="..\ExcelPdfConverter\OutputPaths.cs"><Link>OutputPaths.cs</Link></Compile></ItemGroup>
+<ItemGroup><Reference Include="System"/><Reference Include="System.Core"/><Compile Include="OutputPathsTests.cs"/></ItemGroup>
 <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
-</Project>
+<ItemGroup><ProjectReference Include="..\ExcelPdfConverter.Core\ExcelPdfConverter.Core.csproj"><Project>{3A264E42-0CD8-423F-90D2-92EFAB204ADB}</Project><Name>ExcelPdfConverter.Core</Name></ProjectReference></ItemGroup></Project>
+

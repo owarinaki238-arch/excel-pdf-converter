@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using ExcelPdfConverter;
+using ExcelPdfConverter.Core;
 internal static class OutputPathsTests
 {
     private static void Check(bool condition, string name) { if (!condition) throw new Exception(name); Console.WriteLine("PASS: " + name); }
@@ -24,3 +24,4 @@ internal static class OutputPathsTests
         finally { Directory.Delete(directory, true); }
     }
 }
+

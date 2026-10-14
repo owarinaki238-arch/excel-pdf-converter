@@ -1,15 +1,15 @@
 using System;
 using System.IO;
-namespace ExcelPdfConverter
+namespace ExcelPdfConverter.Core
 {
-    internal static class OutputPaths
+    public static class OutputPaths
     {
-        internal static bool IsSupported(string path)
+        public static bool IsSupported(string path)
         {
             var ext = Path.GetExtension(path).ToLowerInvariant();
             return ext == ".xlsx" || ext == ".xls" || ext == ".xlsm" || ext == ".xlsb";
         }
-        internal static string Available(string directory, string name)
+        public static string Available(string directory, string name)
         {
             for (int i = 0; ; i++)
             {
@@ -19,3 +19,4 @@ namespace ExcelPdfConverter
         }
     }
 }
+
