@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelPdfConverter", "ExcelPdfConverter\ExcelPdfConverter.csproj", "{FC269F40-411E-46B7-902F-3A9D8646D588}"
+EndProject
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {FC269F40-411E-46B7-902F-3A9D8646D588}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+        {FC269F40-411E-46B7-902F-3A9D8646D588}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+        {FC269F40-411E-46B7-902F-3A9D8646D588}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+        {FC269F40-411E-46B7-902F-3A9D8646D588}.Release|Any CPU.Build.0 = Release|AnyCPU
+    EndGlobalSection
+EndGlobal
